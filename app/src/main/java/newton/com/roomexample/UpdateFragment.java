@@ -14,12 +14,12 @@ import android.widget.Toast;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AddUserFragment extends Fragment {
+public class UpdateFragment extends Fragment {
+    private EditText UserId, UserEmail, UserName;
+    private Button BnUpdate;
 
-    private EditText UserId,UserName,UserEmail;
-    private Button BnSave;
 
-    public AddUserFragment() {
+    public UpdateFragment() {
         // Required empty public constructor
     }
 
@@ -28,38 +28,38 @@ public class AddUserFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_update, container, false);
 
-        View view =  inflater.inflate(R.layout.fragment_add_user, container, false);
-
+        UserEmail = view.findViewById(R.id.txt_upd_email);
         UserId = view.findViewById(R.id.txt_upd_user_id);
         UserName = view.findViewById(R.id.txt_upd_name);
-        UserEmail = view.findViewById(R.id.txt_upd_email);
-        BnSave = view.findViewById(R.id.bn_save_user);
+        BnUpdate = view.findViewById(R.id.bn_upd_user);
 
-        BnSave.setOnClickListener(new View.OnClickListener() {
+        BnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                int userid = Integer.parseInt(UserId.getText().toString());
-                String username = UserName.getText().toString();
-                String useremail = UserEmail.getText().toString();
+                int id = Integer.parseInt(UserId.getText().toString());
+                String name = UserName.getText().toString();
+                String email = UserEmail.getText().toString();
 
                 User user = new User();
-                user.setId(userid);
-                user.setName(username);
-                user.setEmail(useremail);
+                user.setId(id);
+                user.setEmail(email);
+                user.setName(name);
 
-                MainActivity.myAppDatabase.myDao().addUser(user);
-                Toast.makeText(getActivity(),"Salvo com sucesso",Toast.LENGTH_SHORT).show();
+                MainActivity.myAppDatabase.myDao().updateUser(user);
 
+                Toast.makeText(getActivity(),"Update sucess",Toast.LENGTH_SHORT).show();
 
                 UserId.setText("");
-                UserName.setText("");
                 UserEmail.setText("");
-
+                UserName.setText("");
 
             }
         });
+
+
 
         return view;
     }
