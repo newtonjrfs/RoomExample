@@ -2,4 +2,4 @@
 
 Aprendendo a usar ROOM na configuração de Android
 
-![atm](https://media.istockphoto.com/vectors/businessman-hand-hold-signboard-green-check-mark-and-red-x-mark-right-vector-id892634206)
+![atm](https://uploaddeimagens.com.br/images/001/491/991/full/room.jpg?1530572427)
